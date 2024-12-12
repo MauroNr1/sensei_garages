@@ -7,20 +7,20 @@ local function isPlayerInGroup(player, group)
 end
 
 local function hasVehiclePermission(player, vehicle)
-    if vehicle.owner and player.charId ~= vehicle.owner then
-        return false
+    if vehicle.owner and player.charId == vehicle.owner then
+        return true
     end
-    if vehicle.group and not isPlayerInGroup(player, vehicle.group) then
-        return false
+    if vehicle.group and isPlayerInGroup(player, vehicle.group) then
+        return true
     end
-    return true
+    return false
 end
 
 local function hasGaragePermission(player, garage)
-    if garage.group and not isPlayerInGroup(player, garage.group) then
-        return false
+    if garage.group and isPlayerInGroup(player, garage.group) then
+        return true
     end
-    return true
+    return false
 end
 
 local function hasPermission(player, vehicle, garage)

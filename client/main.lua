@@ -13,8 +13,6 @@ local function hasPermission(garage)
 end
 
 local function updateTextUI(vehicle)
-    if not inZone then return end
-
     local garage = garages[inZone]
 
     if vehicle and garage.type ~= 'impound' then
@@ -71,4 +69,11 @@ for i, v in pairs(garages) do
     })
 end
 
-lib.onCache('vehicle', updateTextUI)
+lib.onCache('vehicle', function(vehicle)
+    if not inZone then return end
+
+    local garage = garages[inZone]
+    if not hasPermission(garage) then return end
+
+    updateTextUI(vehicle)
+end)
