@@ -12,14 +12,14 @@ A garage system for the [ox_core](https://github.com/overextended/ox_core) frame
 
 - 3 configured garages. (with the hope that you will PR more 😁)
 
-### Retrieval
+### Retrieving vehicles
 
 - Vehicles spawn on pre-defined parking spots
 - Built using ox_lib's context menu
 - Vehicle images from FiveM docs
 - Vehicle metadata (doors and seats)
 
-### Storing
+### Storing vehicles
 
 - Vehicle is stopped automatically
 - Damage and cosmetics stored automatically
