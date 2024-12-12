@@ -22,7 +22,7 @@ A garage system for the [ox_core](https://github.com/overextended/ox_core) frame
 ### Storing vehicles
 
 - Vehicle is stopped automatically
-- Damage and cosmetics stored automatically
+- Damage and vehicle health stored automatically
 
 ### Secure
 
