@@ -1,7 +1,7 @@
 -- Type is either 'parking' or 'impound'
 
 -- Group can be a string or an array of strings.
---      Example: 'lspd' or {'lspd', 'bcso', 'sahp'}
+-- Example: 'lspd' or {'lspd', 'bcso', 'sahp'}
 
 return {
     elginalley = {
@@ -79,13 +79,13 @@ return {
         }
     },
     mrpdfront = {
-        label = 'Mission Row PD Front Parking',
+        label = 'MRPD Front Parking',
         group = 'lspd',
         type = 'parking',
         zone = {
             points = {
                 vec3(411.0, -978.75, 30.0),
-                vec3(405.45999145508, -974.04998779297, 30.0),
+                vec3(405.46, -974.05, 30.0),
                 vec3(405.0, -1012.0, 30.0),
                 vec3(411.0, -1007.0, 30.0),
             },
