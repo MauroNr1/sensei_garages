@@ -6,17 +6,25 @@ local function isPlayerInGroup(player, group)
     return player.getGroup(group)
 end
 
-local function hasPermission(player, vehicle, garage)
+local function hasVehiclePermission(player, vehicle)
     if vehicle.owner and player.charId ~= vehicle.owner then
         return false
     end
     if vehicle.group and not isPlayerInGroup(player, vehicle.group) then
         return false
     end
+    return true
+end
+
+local function hasGaragePermission(player, garage)
     if garage.group and not isPlayerInGroup(player, garage.group) then
         return false
     end
     return true
+end
+
+local function hasPermission(player, vehicle, garage)
+    return hasVehiclePermission(player, vehicle) and hasGaragePermission(player, garage)
 end
 
 lib.callback.register('sensei_garages:getVehiclesInGarage', function(source, garageId, params)
@@ -24,9 +32,9 @@ lib.callback.register('sensei_garages:getVehiclesInGarage', function(source, gar
     local garage = garages[garageId]
     if not player or not garage then return false, 'wrong_args' end
 
-    if params.group and not isPlayerInGroup(player, params.group) then return false, 'no_permission' end
+    if not hasGaragePermission(player, garage) then return false, 'no_permission' end
 
-    local response = db.getVehiclesStored(garage.type == 'impound' and 'impound' or garageId, params.owner and player.charId)
+    local response = db.getVehiclesStored(garage.type == 'impound' and 'impound' or garageId, params.owner and player.charId, params.group)
     if not response then return false, 'db_error' end
 
     return true, response
