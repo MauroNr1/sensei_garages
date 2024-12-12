@@ -29,7 +29,7 @@ function StoreVehicle(vehicle, garageId)
 
     local properties = lib.getVehicleProperties(vehicle)
 
-    local success, error = lib.callback.await('sensei_garages:storeVehicle', 5000, VehToNet(vehicle), garageId)
+    local success, error = lib.callback.await('sensei_garages:storeVehicle', 5000, VehToNet(vehicle), garageId, properties)
 
     if success then
         lib.notify({
