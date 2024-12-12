@@ -1,10 +1,16 @@
 fx_version 'cerulean'
 game 'gta5'
-
 lua54 'yes'
+use_experimental_fxv2_oal 'yes'
+
+name 'sensei_garages'
+author 'MauroNr1'
+version '1.0.0'
+repository 'https://github.com/MauroNr1/sensei_garages'
+description 'Garage for ox_core using ox_lib'
 
 dependencies {
-    '/server:7290',
+    '/server:6116',
     '/onesync',
     'ox_core',
     'ox_lib',
@@ -18,14 +24,14 @@ shared_scripts {
 
 files {
     'data/*.lua',
-    'modules/*.lua'
+    'client/utils.lua'
 }
 
 client_scripts {
     'client/main.lua',
     'client/store.lua',
     'client/retrieve.lua',
-    'client/debug.lua'
+    'client/creator.lua'
 }
 
 server_scripts {

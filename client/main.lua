@@ -1,5 +1,5 @@
 local garages = require 'data.garages'
-local utils = require 'modules.utils'
+local utils = require 'client.utils'
 
 local inZone = nil
 
