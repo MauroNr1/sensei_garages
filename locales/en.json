@@ -3,6 +3,7 @@
   "store_vehicle": "Store vehicle",
   "retrieve_vehicle": "Retrieve vehicle",
   "garage_label": "Garage",
+  
   "vehicle_plate": "Plate: %s",
   "unknown_vehicle": "Unknown",
   "vehicle_doors": "Doors",

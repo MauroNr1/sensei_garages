@@ -3,7 +3,8 @@ local garages = require 'data.garages'
 function StoreVehicle(vehicle, garageId)
     if not vehicle then
         return lib.notify({
-            title = 'Garage',
+            id = 'garage_store_error',
+            title = locale('garage_label'),
             description = locale('not_in_vehicle'),
             type = 'error'
         })
@@ -13,7 +14,8 @@ function StoreVehicle(vehicle, garageId)
 
     if garage.type == 'impound' then
         return lib.notify({
-            title = 'Garage',
+            id = 'garage_store_error',
+            title = locale('garage_label'),
             description = locale('no_storing_in_impound'),
             type = 'error'
         })
@@ -30,14 +32,14 @@ function StoreVehicle(vehicle, garageId)
     if success then
         lib.notify({
             id = 'garage_store_success',
-            title = 'Garage',
+            title = locale('garage_label'),
             description = locale('store_success'),
             type = 'success'
         })
     else
         lib.notify({
             id = 'garage_store_error',
-            title = 'Garage',
+            title = locale('garage_label'),
             description = locale(error) or locale('timeout'),
             type = 'error'
         })

@@ -75,13 +75,9 @@ function OpenRetrieveMenu(garageId)
     local params = {} -- Done this way to allow vehicles owned by player and group later
 
     if garage.group then
-        params[#params + 1] = {
-            group = true
-        }
+        params.group = true
     else
-        params[#params + 1] = {
-            owner = true
-        }
+        params.owner = true
     end
 
     local success, data = lib.callback.await('sensei_garages:getVehiclesInGarage', 2000, garageId, params)
