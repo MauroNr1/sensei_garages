@@ -18,11 +18,11 @@ local function updateTextUI(vehicle)
     local garage = garages[inZone]
 
     if vehicle and garage.type ~= 'impound' then
-        lib.showTextUI(('**Store vehicle**  \nInteract with [%s]'):format(utils.getKeyNameForCommand(`+ox_lib-radial`)), {
+        lib.showTextUI(('**%s**  \n%s [%s]'):format(locale('store_vehicle'), locale('interact_with'), utils.getKeyNameForCommand(`+ox_lib-radial`)), {
             icon = 'fa-square-parking'
         })
     else
-        lib.showTextUI(('**Retrieve vehicle**  \nInteract with [%s]'):format(utils.getKeyNameForCommand(`+ox_lib-radial`)), {
+        lib.showTextUI(('**%s**  \n%s [%s]'):format(locale('retrieve_vehicle'), locale('interact_with'), utils.getKeyNameForCommand(`+ox_lib-radial`)), {
             icon = 'fa-square-parking'
         })
     end
@@ -37,7 +37,7 @@ local function onEnter(zone)
     lib.addRadialItem({
         id = 'garage_item',
         icon = 'square-parking',
-        label = 'Garage',
+        label = locale('garage_label'),
         onSelect = function()
             local garage = garages[inZone]
 

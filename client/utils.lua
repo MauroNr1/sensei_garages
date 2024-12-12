@@ -40,7 +40,7 @@ function module.getVehicleFullName(name, make)
     elseif make then
         return make
     end
-    return 'Unknown'
+    return locale('unknown_vehicle')
 end
 
 return module

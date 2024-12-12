@@ -23,15 +23,15 @@ function RetrieveVehicle(data)
     if success then
         lib.notify({
             id = 'garage_retrieve_success',
-            title = 'Garage',
-            description = 'Your vehicle has been retrieved.',
+            title = locale('garage_label'),
+            description = locale('retrieve_success'),
             type = 'success'
         })
     else
         lib.notify({
             id = 'garage_retrieve_error',
-            title = 'Garage',
-            description = error or 'Please wait a few seconds before trying to retrieve another vehicle.',
+            title = locale('garage_label'),
+            description = locale(error) or locale('timeout'),
             type = 'error'
         })
     end
@@ -46,7 +46,7 @@ local function generateOptions(vehicles, garageId)
 
         options[#options + 1] = {
             title = utils.getVehicleFullName(vehicleData.name, vehicleData.make),
-            description = ('Plate: %s'):format(vehicle.plate),
+            description = locale('vehicle_plate', vehicle.plate),
             icon = ('https://docs.fivem.net/vehicles/%s.webp'):format(vehicle.model),
             onSelect = RetrieveVehicle,
             args = {
@@ -56,11 +56,11 @@ local function generateOptions(vehicles, garageId)
             arrow = true,
             metadata = {
                 {
-                    label = 'Doors',
+                    label = locale('vehicle_doors'),
                     value = vehicleData.doors
                 },
                 {
-                    label = 'Seats',
+                    label = locale('vehicle_seats'),
                     value = vehicleData.seats
                 }
             }
@@ -81,8 +81,8 @@ function OpenRetrieveMenu(garageId)
         if #data == 0 then
             return lib.notify({
                 id = 'garage_retrieve_info',
-                title = 'Garage',
-                description = 'There are no owned vehicles in this garage.',
+                title = locale('garage_label'),
+                description = locale("no_owned_vehicles"),
                 type = 'inform'
             })
         end
@@ -96,8 +96,8 @@ function OpenRetrieveMenu(garageId)
     else
         lib.notify({
             id = 'garage_retrieve_error',
-            title = 'Garage',
-            description = data or 'Please wait a few seconds before trying to retrieve another vehicle.',
+            title = locale('garage_label'),
+            description = locale(data) or locale('timeout'),
             type = 'error'
         })
     end

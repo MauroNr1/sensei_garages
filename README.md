@@ -4,7 +4,6 @@ A garage system for the [ox_core](https://github.com/overextended/ox_core) frame
 
 ## 📋 To-do
 
-- Locales
 - Implement assigned vehicles (owned by a player and a group)
 - Add police impounding (ox_police)
 

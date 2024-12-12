@@ -24,7 +24,8 @@ shared_scripts {
 
 files {
     'data/*.lua',
-    'client/utils.lua'
+    'client/utils.lua',
+    'locales/*.json'
 }
 
 client_scripts {
@@ -37,4 +38,8 @@ client_scripts {
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
     'server/main.lua'
+}
+
+ox_libs {
+    'locale'
 }

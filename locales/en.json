@@ -1,0 +1,22 @@
+{
+    "interact_with": "Interact with",
+    "store_vehicle": "Store vehicle",
+    "retrieve_vehicle": "Retrieve vehicle",
+    "garage_label": "Garage",
+    "vehicle_plate": "Plate: %s",
+    "unknown_vehicle": "Unknown",
+    "vehicle_doors": "Doors",
+    "vehicle_seats": "Seats",
+
+    "store_success": "Your vehicle is now stored in this garage.",
+    "retrieve_success": "Your vehicle has been retrieved.",
+
+    "no_owned_vehicles": "There are no owned vehicles in this garage.",
+    "not_in_vehicle": "You are not in a vehicle.",
+    "no_storing_in_impound": "You can not store a vehicle in an impound.",
+    "timeout": "Please wait a few seconds before trying that again.",
+    "wrong_args": "The wrong arguments were provided to the server.",
+    "no_permission": "You do not have permission to do that.",
+    "db_error": "Server refused the request.",
+    "spawn_error": "Could not spawn vehicle."
+}

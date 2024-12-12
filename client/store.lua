@@ -4,7 +4,7 @@ function StoreVehicle(vehicle, garageId)
     if not vehicle then
         return lib.notify({
             title = 'Garage',
-            description = 'You are not in a vehicle.',
+            description = locale('not_in_vehicle'),
             type = 'error'
         })
     end
@@ -14,7 +14,7 @@ function StoreVehicle(vehicle, garageId)
     if garage.type == 'impound' then
         return lib.notify({
             title = 'Garage',
-            description = 'You cannot store a vehicle in an impound.',
+            description = locale('no_storing_in_impound'),
             type = 'error'
         })
     end
@@ -31,14 +31,14 @@ function StoreVehicle(vehicle, garageId)
         lib.notify({
             id = 'garage_store_success',
             title = 'Garage',
-            description = 'Your vehicle is now stored in this garage.',
+            description = locale('store_success'),
             type = 'success'
         })
     else
         lib.notify({
             id = 'garage_store_error',
             title = 'Garage',
-            description = error or 'Please wait a few second before trying to store another vehicle',
+            description = locale(error) or locale('timeout'),
             type = 'error'
         })
     end
