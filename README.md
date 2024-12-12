@@ -9,6 +9,7 @@ A garage system for the [ox_core](https://github.com/overextended/ox_core) frame
 - Add police impounding (ox_police)
 
 ## ✨ Features
+
 - 3 configured garages. (with the hope that you will PR more 😁)
 
 ### Retrieval
