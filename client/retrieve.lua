@@ -87,7 +87,6 @@ function OpenRetrieveMenu(garageId)
     local success, data = lib.callback.await('sensei_garages:getVehiclesInGarage', 2000, garageId, params)
 
     if success then
-
         if #data == 0 then
             return lib.notify({
                 id = 'garage_retrieve_info',
