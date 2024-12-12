@@ -7,7 +7,7 @@ name 'sensei_garages'
 author 'MauroNr1'
 version '1.0.0'
 repository 'https://github.com/MauroNr1/sensei_garages'
-description 'Garage for ox_core using ox_lib'
+description 'A garage system for ox_core using ox_lib'
 
 dependencies {
     '/server:6116',
