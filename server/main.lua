@@ -6,11 +6,14 @@ local function isPlayerInGroup(player, group)
     return player.getGroup(group)
 end
 
-local function hasVehiclePermission(player, vehicle)
+local function hasPermission(player, vehicle, garage)
     if vehicle.owner and player.charId ~= vehicle.owner then
         return false
     end
     if vehicle.group and not isPlayerInGroup(player, vehicle.group) then
+        return false
+    end
+    if garage.group and not isPlayerInGroup(player, garage.group) then
         return false
     end
     return true
@@ -35,7 +38,7 @@ lib.callback.register('sensei_garages:storeVehicle', function(source, netId, gar
     local garage = garages[garageId]
     if not player or not vehicle or not garage then return false, 'wrong_args' end
 
-    if not hasVehiclePermission(player, vehicle) then return false, 'no_permission' end
+    if not hasPermission(player, vehicle, garage) then return false, 'no_permission' end
 
     vehicle.setStored(garageId, true)
     return true
@@ -49,7 +52,7 @@ lib.callback.register('sensei_garages:spawnVehicle', function(source, data)
 
     local response = db.getVehicleOwnerAndGroup(data.dbId)
     if not response then return false, 'vehicle_not_found' end
-    if not hasVehiclePermission(player, response) then return false, 'no_permission' end
+    if not hasPermission(player, response, garage) then return false, 'no_permission' end
 
     local vehicle = Ox.SpawnVehicle(data.dbId, spawnCoords.xyz, spawnCoords.w)
     if not vehicle then return false, 'spawn_error' end

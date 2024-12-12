@@ -1,7 +1,16 @@
 local garages = require 'data.garages'
 local utils = require 'client.utils'
 
+local player = Ox.GetPlayer()
 local inZone = nil
+
+local function hasPermission(garage)
+    if garage.group then
+        return player.getGroup(garage.group)
+    end
+
+    return true
+end
 
 local function updateTextUI(vehicle)
     if not inZone then return end
@@ -21,6 +30,9 @@ end
 
 local function onEnter(zone)
     inZone = zone.zoneId
+
+    if not hasPermission(zone) then return end
+
     updateTextUI(cache.vehicle)
     lib.addRadialItem({
         id = 'garage_item',
@@ -38,8 +50,11 @@ local function onEnter(zone)
     })
 end
 
-local function onExit()
+local function onExit(zone)
     inZone = nil
+
+    if not hasPermission(zone) then return end
+
     lib.hideTextUI()
     lib.removeRadialItem('garage_item')
 end
@@ -50,6 +65,7 @@ for i, v in pairs(garages) do
         thickness = v.zone.thickness,
         debug = false,
         zoneId = i,
+        group = v.group,
         onEnter = onEnter,
         onExit = onExit
     })
