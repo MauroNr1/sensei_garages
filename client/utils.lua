@@ -12,7 +12,7 @@ function module.getClosestVacantCoord(coordsArray)
         local tempCoords = coordsArray[i].xyz
         local tempDistance = #(playerCoords - tempCoords)
 
-        if closest.distance > tempDistance and #lib.getNearbyVehicles(tempCoords, 4.0, true) == 0 and #lib.getNearbyPlayers(tempCoords, 3.0, true) == 0 then
+        if closest.distance > tempDistance and #lib.getNearbyVehicles(tempCoords, 4.0, true) == 0 and #lib.getNearbyPlayers(tempCoords, 4.0, true) == 0 then
             closest.distance = tempDistance
             closest.index = i
         end
