@@ -6,9 +6,17 @@ local inZone = nil
 local function updateTextUI(vehicle)
     if not inZone then return end
 
-    lib.showTextUI((vehicle and '**Store vehicle**  \nInteract with [%s]' or '**Retrieve vehicle**  \nInteract with [%s]'):format(utils.getKeyNameForCommand(`+ox_lib-radial`)), {
-        icon = 'fa-square-parking'
-    })
+    local garage = garages[inZone]
+
+    if vehicle and garage.type ~= 'impound' then
+        lib.showTextUI(('**Store vehicle**  \nInteract with [%s]'):format(utils.getKeyNameForCommand(`+ox_lib-radial`)), {
+            icon = 'fa-square-parking'
+        })
+    else
+        lib.showTextUI(('**Retrieve vehicle**  \nInteract with [%s]'):format(utils.getKeyNameForCommand(`+ox_lib-radial`)), {
+            icon = 'fa-square-parking'
+        })
+    end
 end
 
 local function onEnter(zone)
@@ -19,7 +27,9 @@ local function onEnter(zone)
         icon = 'square-parking',
         label = 'Garage',
         onSelect = function()
-            if cache.vehicle then
+            local garage = garages[inZone]
+
+            if cache.vehicle and garage.type ~= 'impound' then
                 StoreVehicle(cache.vehicle, inZone)
             else
                 OpenRetrieveMenu(inZone)

@@ -1,8 +1,20 @@
+local garages = require 'data.garages'
+
 function StoreVehicle(vehicle, garageId)
     if not vehicle then
         return lib.notify({
             title = 'Garage',
             description = 'You are not in a vehicle.',
+            type = 'error'
+        })
+    end
+
+    local garage = garages[garageId]
+
+    if garage.type == 'impound' then
+        return lib.notify({
+            title = 'Garage',
+            description = 'You cannot store a vehicle in an impound.',
             type = 'error'
         })
     end
