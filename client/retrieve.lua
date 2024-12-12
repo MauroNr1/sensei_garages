@@ -72,9 +72,8 @@ end
 
 function OpenRetrieveMenu(garageId)
     local garage = garages[garageId]
-    local params = {}
+    local params = {} -- Done this way to allow vehicles owned by player and group later
 
-    -- Done this way to allow vehicles owned by player and group later
     if garage.group then
         params[#params + 1] = {
             group = true
@@ -85,7 +84,7 @@ function OpenRetrieveMenu(garageId)
         }
     end
 
-    local success, data = lib.callback.await('sensei_garages:getVehiclesInGarage', 2000, garageId)
+    local success, data = lib.callback.await('sensei_garages:getVehiclesInGarage', 2000, garageId, params)
 
     if success then
 

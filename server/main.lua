@@ -32,7 +32,7 @@ lib.callback.register('sensei_garages:getVehiclesInGarage', function(source, gar
     local garage = garages[garageId]
     if not player or not garage then return false, 'wrong_args' end
 
-    if not hasGaragePermission(player, garage) then return false, 'no_permission' end
+    if params.group and not hasGaragePermission(player, garage) then return false, 'no_permission' end
 
     local response = db.getVehiclesStored(garage.type == 'impound' and 'impound' or garageId, params.owner and player.charId, params.group)
     if not response then return false, 'db_error' end
