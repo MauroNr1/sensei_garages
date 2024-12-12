@@ -48,7 +48,18 @@ lib.callback.register('sensei_garages:storeVehicle', function(source, netId, gar
 
     if not hasPermission(player, vehicle, garage) then return false, 'no_permission' end
 
-    vehicle.setProperties(vehicleProperties, false)
+    local properties = vehicle.getProperties()
+    properties.bodyHealth = vehicleProperties.bodyHealth
+    properties.engineHealth = vehicleProperties.engineHealth
+    properties.tankHealth = vehicleProperties.tankHealth
+    properties.fuelLevel = vehicleProperties.fuelLevel
+    properties.oilLevel = vehicleProperties.oilLevel
+    properties.dirtLevel = vehicleProperties.dirtLevel
+    properties.windows = vehicleProperties.windows
+    properties.doors = vehicleProperties.doors
+    properties.tyres = vehicleProperties.tyres
+
+    vehicle.setProperties(properties, false)
     vehicle.setStored(garageId, true)
     return true
 end)
