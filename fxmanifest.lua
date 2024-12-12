@@ -10,7 +10,7 @@ repository 'https://github.com/MauroNr1/sensei_garages'
 description 'A garage system for ox_core using ox_lib'
 
 dependencies {
-    '/server:6116',
+    '/server:7290',
     '/onesync',
     'ox_core',
     'ox_lib',
