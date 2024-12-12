@@ -40,7 +40,7 @@ lib.callback.register('sensei_garages:getVehiclesInGarage', function(source, gar
     return true, response
 end)
 
-lib.callback.register('sensei_garages:storeVehicle', function(source, netId, garageId)
+lib.callback.register('sensei_garages:storeVehicle', function(source, netId, garageId, vehicleProperties)
     local player = Ox.GetPlayer(source)
     local vehicle = Ox.GetVehicleFromNetId(netId)
     local garage = garages[garageId]
@@ -48,6 +48,7 @@ lib.callback.register('sensei_garages:storeVehicle', function(source, netId, gar
 
     if not hasPermission(player, vehicle, garage) then return false, 'no_permission' end
 
+    vehicle.setProperties(vehicleProperties, false)
     vehicle.setStored(garageId, true)
     return true
 end)

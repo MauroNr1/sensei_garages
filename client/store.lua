@@ -27,6 +27,8 @@ function StoreVehicle(vehicle, garageId)
         if GetVehiclePedIsIn(cache.ped, false) == 0 then return true end
     end, 'Player did not leave vehicle in time', 10000)
 
+    local properties = lib.getVehicleProperties(vehicle)
+
     local success, error = lib.callback.await('sensei_garages:storeVehicle', 5000, VehToNet(vehicle), garageId)
 
     if success then
