@@ -34,7 +34,7 @@ lib.callback.register('sensei_garages:storeVehicle', function(source, netId, gar
     local vehicle = Ox.GetVehicleFromNetId(netId)
     local garage = garages[garageId]
     if not player or not vehicle or not garage then return false, 'wrong_args' end
-    
+
     if not hasVehiclePermission(player, vehicle) then return false, 'no_permission' end
 
     vehicle.setStored(garageId, true)

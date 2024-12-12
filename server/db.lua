@@ -25,7 +25,9 @@ function module.getVehiclesStored(stored, owner, group)
             stored,
             group
         }
-    else return end
+    else
+        return
+    end
 
     return MySQL.query.await(query, params)
 end

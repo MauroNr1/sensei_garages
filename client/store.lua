@@ -1,9 +1,11 @@
 function StoreVehicle(vehicle, garageId)
-    if not vehicle then return lib.notify({
-        title = 'Garage',
-        description = 'You are not in a vehicle.',
-        type = 'error'
-    }) end
+    if not vehicle then
+        return lib.notify({
+            title = 'Garage',
+            description = 'You are not in a vehicle.',
+            type = 'error'
+        })
+    end
 
     TaskLeaveVehicle(cache.ped, vehicle, 0)
 

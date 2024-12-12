@@ -5,12 +5,14 @@ function RetrieveVehicle(data)
     local garage = garages[data.garageId]
 
     local spawnIndex = utils.getClosestVacantCoord(garage.spots)
-    if not spawnIndex then return lib.notify({
-        id = 'garage_retrieve_error',
-        title = 'Garage',
-        description = 'There are no available parking spots.',
-        type = 'error'
-    }) end
+    if not spawnIndex then
+        return lib.notify({
+            id = 'garage_retrieve_error',
+            title = 'Garage',
+            description = 'There are no available parking spots.',
+            type = 'error'
+        })
+    end
 
     local success, error = lib.callback.await('sensei_garages:spawnVehicle', 5000, {
         dbId = data.dbId,
@@ -42,7 +44,7 @@ local function generateOptions(vehicles, garageId)
         local vehicle = vehicles[i]
         local vehicleData = Ox.GetVehicleData(vehicle.model)
 
-        options[#options+1] = {
+        options[#options + 1] = {
             title = utils.getVehicleFullName(vehicleData.name, vehicleData.make),
             description = ('Plate: %s'):format(vehicle.plate),
             icon = ('https://docs.fivem.net/vehicles/%s.webp'):format(vehicle.model),
@@ -76,12 +78,14 @@ function OpenRetrieveMenu(garageId)
     if success then
         local garage = garages[garageId]
 
-        if #data == 0 then return lib.notify({
-            id = 'garage_retrieve_info',
-            title = 'Garage',
-            description = 'There are no owned vehicles in this garage.',
-            type = 'inform'
-        }) end
+        if #data == 0 then
+            return lib.notify({
+                id = 'garage_retrieve_info',
+                title = 'Garage',
+                description = 'There are no owned vehicles in this garage.',
+                type = 'inform'
+            })
+        end
 
         lib.registerContext({
             id = 'garage_menu',
