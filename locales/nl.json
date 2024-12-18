@@ -1,0 +1,23 @@
+{
+  "interact_with": "Interactie met",
+  "store_vehicle": "Voertuig Parkeren",
+  "retrieve_vehicle": "Voertuig Opvragen",
+  "garage_label": "Garage",
+
+  "vehicle_plate": "Kenteken: %s",
+  "unknown_vehicle": "Onbekend",
+  "vehicle_doors": "Deuren",
+  "vehicle_seats": "Stoelen",
+
+  "store_success": "Je voertuig is nu opgeslagen in deze garage.",
+  "retrieve_success": "Je voertuig is opgehaald.",
+
+  "no_owned_vehicles": "Je bezit geen voertuigen.",
+  "not_in_vehicle": "Je zit niet in een voertuig.",
+  "no_storing_in_impound": "Je kunt geen voertuig opslaan in een impound.",
+  "timeout": "Wacht een paar seconden voordat je het opnieuw probeert.",
+  "wrong_args": "De verkeerde argumenten zijn naar de server gestuurd.",
+  "no_permission": "Je hebt geen toestemming om dat te doen.",
+  "db_error": "De server heeft het verzoek geweigerd.",
+  "spawn_error": "Het voertuig kon niet worden gespawned."
+}
