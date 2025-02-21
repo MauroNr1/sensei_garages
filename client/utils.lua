@@ -1,4 +1,5 @@
 local module = {}
+-- https://gist.github.com/DemmyDemon/69d53b78b005a7c1a6fdb9036e401f4c
 local specialKeyCodes = {
     ['b_100'] = 'Mouse 1',
     ['b_101'] = 'Mouse 2',
